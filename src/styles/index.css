@@ -1,0 +1,104 @@
+/* ✅ 전체 페이지 스타일 */
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #f4f6f9;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 120vh; /* 🔹 페이지 높이를 더 길게 설정 */
+  overflow-y: auto;
+  padding-top: 50px; /* 🔹 위쪽 여백 추가 */
+}
+
+/* ✅ 컨테이너 */
+.container {
+  width: 100vw;
+  max-width: 800px; /* 🔹 컨테이너 크기 살짝 증가 */
+  background: white;
+  padding: 40px; /* 🔹 내부 패딩 증가 */
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* ✅ FixBot 로고 */
+.logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+/* ✅ 제목 */
+h1 {
+  font-size: 30px; /* 🔹 제목 크기 증가 */
+  font-weight: bold;
+  color: #0071c5;
+  margin-bottom: 10px;
+}
+
+/* ✅ 설명 */
+p {
+  color: #333;
+  font-size: 18px; /* 🔹 설명 크기 증가 */
+}
+
+/* ✅ 입력 폼 스타일 */
+.form-container {
+  background: white;
+  padding: 25px; /* 🔹 내부 패딩 증가 */
+  border-radius: 12px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
+  width: 100%; /* 🔹 폼 전체 너비 맞춤 */
+  box-sizing: border-box; /* 🔹 박스 크기 유지 */
+}
+
+/* ✅ 폼 내부 요소 */
+.form-group {
+  margin-bottom: 20px; /* 🔹 여백 증가 */
+  text-align: left;
+}
+
+/* ✅ 라벨 */
+label {
+  font-size: 18px;
+  font-weight: bold;
+  color: #0071c5;
+  display: block; /* 🔹 라벨을 블록 요소로 변환하여 너비 맞춤 */
+  margin-bottom: 5px;
+}
+
+/* ✅ 드롭다운 & 텍스트 입력 */
+select, textarea {
+  width: 100%; /* 🔹 폼 크기에 맞게 설정 */
+  padding: 14px; /* 🔹 입력 칸 크기 증가 */
+  font-size: 16px;
+  border-radius: 8px; /* 🔹 둥근 모서리 */
+  border: 2px solid #0056b3;
+  margin-top: 5px;
+  box-sizing: border-box; /* 🔹 컨테이너 안에서 크기 유지 */
+}
+
+/* ✅ 질문 입력 칸 */
+textarea {
+  height: 100px; /* 🔹 입력 칸 높이 증가 */
+  resize: none; /* 🔹 크기 조절 방지 */
+}
+
+/* ✅ 버튼 */
+.submit-button {
+  width: 100%;
+  background-color: #0056b3;
+  color: white;
+  padding: 14px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+.submit-button:hover {
+  background-color: #003478;
+}
