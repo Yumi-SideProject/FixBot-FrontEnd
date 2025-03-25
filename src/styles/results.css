@@ -15,6 +15,8 @@ body {
     margin: 0;
     padding: 0;
     color: #1D1D1D;
+    overflow-x: hidden; /* ✅ 좌우 스크롤 방지 */
+    box-sizing: border-box;
 }
 
 /* 결과 전체 박스 */
@@ -25,6 +27,9 @@ body {
     background-color: #FFFFFF;
     border-radius: clamp(1rem, 3vw, 1.5rem);
     box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.06);
+    width: 100%;
+    box-sizing: border-box; /* ✅ 내부 padding 포함 */
+    overflow-wrap: break-word;
 }
 
 /* 섹션 구분 */
@@ -48,6 +53,7 @@ body {
     padding: clamp(1rem, 3vw, 1.5rem);
     margin-bottom: clamp(0.75rem, 2vw, 1.125rem);
     transition: border 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
 }
 
 .result-card:hover {
@@ -60,12 +66,14 @@ body {
     font-weight: bold;
     color: #1D1D1D;
     margin-bottom: 0.625rem;
+    word-break: keep-all;
 }
 
 .result-description {
     font-size: clamp(1rem, 2.5vw, 1.25rem);
     color: #4A4A4A;
     line-height: 1.5;
+    word-break: break-word;
 }
 
 .result-link {
@@ -75,6 +83,7 @@ body {
     color: #0070F3;
     text-decoration: underline;
     font-weight: bold;
+    word-break: break-word;
 }
 
 .result-link:hover {
@@ -91,6 +100,7 @@ body {
     padding: 0.25rem clamp(0.5rem, 2vw, 0.625rem);
     border-radius: 0.5rem;
     margin-left: 0.625rem;
+    word-break: keep-all;
 }
 
 /* 구분선 */
@@ -124,6 +134,7 @@ body {
     padding: 0 clamp(1rem, 4vw, 2.5rem);
     display: flex;
     justify-content: flex-start;
+    box-sizing: border-box;
 }
 
 .back-button {
@@ -139,6 +150,8 @@ body {
     font-size: clamp(1rem, 3vw, 1.5rem);
     font-weight: bold;
     transition: background 0.3s;
+    box-sizing: border-box;
+    white-space: nowrap;
 }
 
 .back-button:hover {
