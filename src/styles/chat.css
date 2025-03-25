@@ -1,165 +1,184 @@
-/* ✅ 전체 페이지 스타일 */
+@font-face {
+    font-family: 'SUITE-Regular';
+    src: url('./assets/font/SUITE-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
-    font-family: 'Noto Sans KR', sans-serif;
-    background-color: #f4f6f9;
+    font-family: 'SUITE-Regular', 'Noto Sans KR', sans-serif;
+    background-color: #ffffff;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    font-size: 24px;
+    line-height: 1.6;
 }
 
-/* ✅ 챗봇 컨테이너 (PC형 너비 확장) */
 .chat-container {
-    width: 100vw;  /* 🔹 기존 100% 대신 뷰포트 너비를 기준으로 확장 */
-    max-width: 800px; /* 🔹 기존 1000px보다 살짝 늘려서 PC 화면에 적절히 맞춤 */
-    height: 90vh;
+    width: 90vw;
+    max-width: 1000px;
+    min-height: 80vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 30px;
-    background-color: white;
-    border-radius: 16px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 60px;
+    background-color: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
     overflow: hidden;
     position: relative;
 }
 
-/* ✅ 채팅 박스 */
 .chat-box {
     flex-grow: 1;
     overflow-y: auto;
-    padding: 20px;
-    background-color: #f9f9f9;
+    padding: 32px;
+    background-color: #F5F5F5;
     display: flex;
     flex-direction: column;
-    max-height: 75vh;
-    border-radius: 10px;
+    max-height: 70vh;
+    border-radius: 16px;
 }
 
-/* ✅ 채팅 말풍선 스타일 */
 .chat-message {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 4px; /* 🔹 기존 8px → 4px (세로 간격 축소) */
-    max-width: 70%; /* 🔹 기존 80% → 70% (PC 화면에 맞게 조정) */
+    margin-bottom: 6px;
+    max-width: 70%;
 }
 
-/* 🤖 FixBot 메시지 (노란색) */
+/* 🤖 FixBot 메시지 */
 .bot-message {
-    background-color: #FFC000; /* 🔹 FixBot 노란색 */
-    color: black;
-    padding: 8px 12px;
-    border-radius: 12px;
+    background-color: #0070F3;
+    color: #ffffff;
+    padding: 10px 14px;
+    border-radius: 14px;
     align-self: flex-start;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    line-height: 1.5;
-    font-size: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    line-height: 1.4;
+    font-size: 24px;
 }
 
-/* 👤 사용자 메시지 (연회색) */
+/* 👤 사용자 메시지 */
 .user-message {
-    background-color: #E9E9E9; /* 🔹 연회색 */
-    color: black;
-    padding: 8px 12px;
-    border-radius: 12px;
+    background-color: #00CFFF;
+    color: #1d1d1d;
+    padding: 10px 14px;
+    border-radius: 14px;
     align-self: flex-end;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    line-height: 1.5;
-    font-size: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    line-height: 1.4;
+    font-size: 24px;
 }
 
-/* ✅ 버튼 스타일 */
 .button-options {
     display: flex;
     flex-direction: column;
-    padding: 10px 0;
-    background-color: #fff;
-    border-top: 1px solid #ddd;
+    padding: 12px 0;
+    background-color: #ffffff;
+    border-top: 1px solid #D9D9D9;
 }
 
 .button-options button {
     width: 100%;
-    padding: 14px;
-    font-size: 16px;
-    border-radius: 8px;
+    padding: 16px;
+    font-size: 24px;
+    border-radius: 10px;
     margin: 6px 0;
-    background-color: #007bff;
+    background-color: #00CFFF;
     color: white;
     border: none;
-    cursor: pointer;
-    transition: 0.3s;
     font-weight: bold;
+    transition: background 0.3s;
+    font-family: 'SUITE-Regular', 'Noto Sans KR', sans-serif;
+
 }
 
 .button-options button:hover {
-    background-color: #0056b3;
+    background-color: #0070F3;
 }
 
-/* ✅ 사용자 입력창 */
+.top-right {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background-color: #0070F3;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    transition: background 0.3s;
+    font-family: 'SUITE-Regular', 'Noto Sans KR', sans-serif;
+}
+
+.top-right:hover {
+    background-color: #00CFFF;
+}
+
 .input-area {
     display: flex;
     align-items: center;
-    padding: 10px;
-    background-color: #fff;
-    border-top: 1px solid #ddd;
+    padding: 16px;
+    background-color: #ffffff;
+    border-top: 1px solid #D9D9D9;
     justify-content: space-between;
 }
 
 .input-area input {
     flex-grow: 1;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
+    padding: 14px;
+    border: 2px solid #0070F3;
+    border-radius: 10px;
+    font-size: 24px;
+    margin-right: 10px;
+    outline: none;
 }
 
 .input-area button {
-    padding: 12px;
-    margin-left: 8px;
-    background-color: #007bff;
+    padding: 14px 16px;
+    background-color: #0070F3;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
-    font-size: 16px;
+    transition: background 0.3s;
+    font-family: 'SUITE-Regular', 'Noto Sans KR', sans-serif;
 }
 
 .input-area button:hover {
-    background-color: #0056b3;
+    background-color: #00CFFF;
 }
 
-/* ✅ 뒤로 가기 버튼 (크기 조정) */
-.top-right {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #e3e3e3;
-    color: #333;
-    border: none;
-    padding: 6px 10px;
-    border-radius: 6px;
+.image-upload-area {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.upload-button {
+    background-color: #0070F3;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 14px;
     font-weight: bold;
+    display: inline-block;
+    margin-bottom: 8px;
 }
 
-.top-right:hover {
-    background-color: #d1d1d1;
-}
-
-/* ✅ 스크롤바 스타일 */
-.chat-box::-webkit-scrollbar {
-    width: 6px;
-}
-
-.chat-box::-webkit-scrollbar-thumb {
-    background-color: #ddd;
+.image-preview img {
+    max-width: 200px;
     border-radius: 10px;
-}
-
-.chat-box::-webkit-scrollbar-track {
-    background: transparent;
+    border: 1px solid #ccc;
 }

@@ -1,104 +1,141 @@
-/* ✅ 전체 페이지 스타일 */
+@font-face {
+  font-family: 'SUITE-Regular';
+  src: url('./assets/font/SUITE-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 body {
-  font-family: 'Noto Sans KR', sans-serif;
-  background-color: #f4f6f9;
+  font-family: 'SUITE-Regular', 'Noto Sans KR', sans-serif;
+  background-color: #ffffff;
   margin: 0;
   padding: 0;
+  font-size: 24px;
+  line-height: 1.8;
+}
+
+.fixbot-wrapper {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  min-height: 120vh; /* 🔹 페이지 높이를 더 길게 설정 */
-  overflow-y: auto;
-  padding-top: 50px; /* 🔹 위쪽 여백 추가 */
+  align-items: center;
+  min-height: 100vh;
+  padding: 100px 40px;
+  background-color: #F5F5F5; /* 연한 회색 배경 */
 }
 
-/* ✅ 컨테이너 */
-.container {
-  width: 100vw;
-  max-width: 800px; /* 🔹 컨테이너 크기 살짝 증가 */
-  background: white;
-  padding: 40px; /* 🔹 내부 패딩 증가 */
-  border-radius: 12px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+.fixbot-card {
+  background: #ffffff;
+  border-radius: 30px;
+  padding: 60px;
+  max-width: 1200px;
+  width: 100%;
   text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
 }
 
-/* ✅ FixBot 로고 */
-.logo {
-  width: 80px;
-  height: 80px;
+.fixbot-logo {
+  width: 100px;
+  height: 100px;
   margin-bottom: 10px;
 }
 
-/* ✅ 제목 */
+/* 제목 스타일 */
+h1, h2, h3 {
+  color: #1D1D1D; /* 타이틀용 진한 블랙 */
+}
+
 h1 {
-  font-size: 30px; /* 🔹 제목 크기 증가 */
+  margin: 10px 0;
+  font-size: 38px;
+}
+
+.subtitle {
+  color: #4A4A4A; /* 중간 강조 텍스트 */
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+.steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
   font-weight: bold;
-  color: #0071c5;
-  margin-bottom: 10px;
 }
 
-/* ✅ 설명 */
-p {
-  color: #333;
-  font-size: 18px; /* 🔹 설명 크기 증가 */
-}
-
-/* ✅ 입력 폼 스타일 */
-.form-container {
-  background: white;
-  padding: 25px; /* 🔹 내부 패딩 증가 */
+/* step도 포인트니까 폰트 적용 */
+.step {
+  flex: 1;
+  padding: 12px;
+  background-color: #0070F3; /* 파란 포인트 색상 */
+  color: white;
   border-radius: 12px;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
-  width: 100%; /* 🔹 폼 전체 너비 맞춤 */
-  box-sizing: border-box; /* 🔹 박스 크기 유지 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  margin: 0 6px;
+  min-width: 180px;
+  height: 35px;
+  font-size: 24px;
+  font-family: 'SUITE-Regular', 'Noto Sans KR', sans-serif;
 }
 
-/* ✅ 폼 내부 요소 */
-.form-group {
-  margin-bottom: 20px; /* 🔹 여백 증가 */
+.step.active {
+  background-color: #0070F3; /* 강조된 스카이 블루 */
+  color: white;
+}
+
+.fixbot-form {
   text-align: left;
 }
 
-/* ✅ 라벨 */
-label {
-  font-size: 18px;
+.fixbot-form label {
+  display: block;
+  margin-bottom: 6px;
   font-weight: bold;
-  color: #0071c5;
-  display: block; /* 🔹 라벨을 블록 요소로 변환하여 너비 맞춤 */
-  margin-bottom: 5px;
+  color: #1D1D1D;
+  font-size: 24px;
+  font-family: 'SUITE-Regular', 'Noto Sans KR', sans-serif;
 }
 
-/* ✅ 드롭다운 & 텍스트 입력 */
-select, textarea {
-  width: 100%; /* 🔹 폼 크기에 맞게 설정 */
-  padding: 14px; /* 🔹 입력 칸 크기 증가 */
-  font-size: 16px;
-  border-radius: 8px; /* 🔹 둥근 모서리 */
-  border: 2px solid #0056b3;
-  margin-top: 5px;
-  box-sizing: border-box; /* 🔹 컨테이너 안에서 크기 유지 */
-}
-
-/* ✅ 질문 입력 칸 */
-textarea {
-  height: 100px; /* 🔹 입력 칸 높이 증가 */
-  resize: none; /* 🔹 크기 조절 방지 */
-}
-
-/* ✅ 버튼 */
-.submit-button {
+.fixbot-form select,
+.fixbot-form textarea {
   width: 100%;
-  background-color: #0056b3;
+  padding: 14px;
+  margin-bottom: 20px;
+  border: 2px solid #0070F3;
+  border-radius: 10px;
+  font-size: 24px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  font-family: 'SUITE-Regular', 'Noto Sans KR', sans-serif;
+}
+
+.fixbot-form textarea {
+  height: 100px;
+  resize: none;
+}
+
+.fixbot-form button {
+  width: 100%;
+  background-color: #00CFFF; /* 버튼 색상 */
   color: white;
   padding: 14px;
-  font-size: 18px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
+  border: none;
+  border-radius: 10px;
+  font-size: 24px;
   font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-family: 'SUITE-Regular', 'Noto Sans KR', sans-serif;
 }
 
-.submit-button:hover {
-  background-color: #003478;
+.fixbot-form button:hover {
+  background-color: #0070F3; /* hover 시 딥블루 */
+}
+
+.fixbot-footer {
+  margin-top: 100px;
+  font-size: 20px;
+  color: #4A4A4A;
+  font-family: 'SUITE-Regular', 'Noto Sans KR', sans-serif;
 }
