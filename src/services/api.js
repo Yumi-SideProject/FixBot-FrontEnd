@@ -1,6 +1,8 @@
+const BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8080";
+
 export async function sendMessageToOpenAI(message, brand, category, subcategory, question, imageUrl) {
     try {
-        const response = await fetch("http://localhost:8080/chat/ai-response", { // ✅ /chat/ai-response로 요청
+        const response = await fetch(`${BASE_URL}/chat/ai-response`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -25,12 +27,13 @@ export async function sendMessageToOpenAI(message, brand, category, subcategory,
     }
 }
 
+
 // 🌐 Google API → 백엔드 연결
 export async function fetchGoogleResults(query) {
     try {
         console.log("📤 Google 검색 요청:", query);
 
-        const response = await fetch(`http://localhost:8080/search/google?query=${encodeURIComponent(query)}`);
+        const response = await fetch(`${BASE_URL}/search/google?query=${encodeURIComponent(query)}`);
 
         console.log("📥 Google 응답 상태:", response.status);
 
@@ -54,7 +57,7 @@ export async function fetchYoutubeResults(query) {
     try {
         console.log("📤 YouTube 검색 요청:", query);
 
-        const response = await fetch(`http://localhost:8080/search/youtube?query=${encodeURIComponent(query)}`);
+        const response = await fetch(`${BASE_URL}/search/youtube?query=${encodeURIComponent(query)}`);
 
         console.log("📥 YouTube 응답 상태:", response.status);
 
