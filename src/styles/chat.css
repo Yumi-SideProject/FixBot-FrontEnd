@@ -6,7 +6,7 @@
 }
 
 html {
-    font-size: 16px; /* 1rem 기준 */
+    font-size: 16px; /* rem 기준 */
 }
 
 body {
@@ -31,7 +31,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 3.75rem; /* 60px */
+    padding: clamp(2rem, 5vw, 4rem);
     background-color: #ffffff;
     border-radius: 1.5rem;
     box-shadow: 0 0.375rem 1.5rem rgba(0, 0, 0, 0.08);
@@ -43,7 +43,7 @@ body {
 .chat-box {
     flex-grow: 1;
     overflow-y: auto;
-    padding: 2rem;
+    padding: clamp(1rem, 3vw, 2rem);
     background-color: #F5F5F5;
     display: flex;
     flex-direction: column;
@@ -55,48 +55,48 @@ body {
 .chat-message {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 0.375rem;
+    margin-bottom: 0.5rem;
     max-width: 70%;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
 }
 
 /* 🤖 FixBot 메시지 */
 .bot-message {
     background-color: #0070F3;
     color: #ffffff;
-    padding: 0.625rem 0.875rem;
+    padding: clamp(0.5rem, 1.2vw, 0.75rem) clamp(0.75rem, 2vw, 1rem);
     border-radius: 0.875rem;
     align-self: flex-start;
     box-shadow: 0 0.125rem 0.375rem rgba(0, 0, 0, 0.05);
     line-height: 1.4;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
 }
 
 /* 👤 사용자 메시지 */
 .user-message {
     background-color: #00CFFF;
     color: #1d1d1d;
-    padding: 0.625rem 0.875rem;
+    padding: clamp(0.5rem, 1.2vw, 0.75rem) clamp(0.75rem, 2vw, 1rem);
     border-radius: 0.875rem;
     align-self: flex-end;
     box-shadow: 0 0.125rem 0.375rem rgba(0, 0, 0, 0.05);
     line-height: 1.4;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
 }
 
 /* 버튼 선택 영역 */
 .button-options {
     display: flex;
     flex-direction: column;
-    padding: 0.75rem 0;
+    padding: 1rem 0;
     background-color: #ffffff;
     border-top: 1px solid #D9D9D9;
 }
 
 .button-options button {
     width: 100%;
-    padding: 1rem;
-    font-size: 1rem;
+    padding: clamp(0.75rem, 2vw, 1rem);
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
     border-radius: 0.625rem;
     margin: 0.375rem 0;
     background-color: #00CFFF;
@@ -111,17 +111,18 @@ body {
     background-color: #0070F3;
 }
 
+/* 상단 돌아가기 버튼 */
 .top-right {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    top: clamp(0.75rem, 2vw, 1rem);
+    left: clamp(0.75rem, 2vw, 1rem);
     background-color: #0070F3;
     color: white;
     border: none;
-    padding: 0.5rem 0.875rem;
+    padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(0.75rem, 2vw, 1rem);
     border-radius: 0.5rem;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
     font-weight: bold;
     transition: background 0.3s;
     font-family: 'SUITE-Regular', 'Noto Sans KR', sans-serif;
@@ -135,29 +136,31 @@ body {
 .input-area {
     display: flex;
     align-items: center;
-    padding: 1rem;
+    padding: clamp(0.75rem, 2vw, 1rem);
     background-color: #ffffff;
     border-top: 1px solid #D9D9D9;
     justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
 }
 
 .input-area input {
     flex-grow: 1;
-    padding: 0.875rem;
+    padding: clamp(0.5rem, 1.2vw, 0.875rem);
     border: 0.125rem solid #0070F3;
     border-radius: 0.625rem;
-    font-size: 1rem;
-    margin-right: 0.625rem;
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
     outline: none;
+    min-width: 0;
 }
 
 .input-area button {
-    padding: 0.875rem 1rem;
+    padding: clamp(0.5rem, 1.5vw, 0.875rem) clamp(1rem, 3vw, 1.5rem);
     background-color: #0070F3;
     color: white;
     border: none;
     border-radius: 0.625rem;
-    font-size: 1rem;
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
     font-weight: bold;
     cursor: pointer;
     transition: background 0.3s;
@@ -179,60 +182,17 @@ body {
 .upload-button {
     background-color: #0070F3;
     color: white;
-    padding: 0.375rem 0.75rem;
+    padding: clamp(0.375rem, 1vw, 0.5rem) clamp(0.75rem, 2vw, 1rem);
     border-radius: 0.5rem;
     cursor: pointer;
     font-weight: bold;
     display: inline-block;
     margin-bottom: 0.5rem;
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
 }
 
 .image-preview img {
-    max-width: 12.5rem; /* 200px */
+    max-width: clamp(8rem, 25vw, 12.5rem);
     border-radius: 0.625rem;
     border: 1px solid #ccc;
-}
-
-/* 📱 반응형 미디어 쿼리 */
-@media (max-width: 768px) {
-    html {
-        font-size: 14px;
-    }
-
-    .chat-container {
-        padding: 1.5rem;
-        border-radius: 1rem;
-    }
-
-    .chat-box {
-        padding: 1rem;
-        max-height: 60vh;
-    }
-
-    .chat-message {
-        max-width: 100%;
-    }
-
-    .bot-message,
-    .user-message,
-    .input-area input,
-    .input-area button,
-    .button-options button,
-    .top-right {
-        font-size: 0.875rem;
-    }
-
-    .input-area {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.5rem;
-    }
-
-    .input-area input {
-        margin-right: 0;
-    }
-
-    .button-options {
-        padding-bottom: 1rem;
-    }
 }
