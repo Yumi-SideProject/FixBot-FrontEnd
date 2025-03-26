@@ -80,7 +80,6 @@ function ChatBot() {
         if (!input.trim()) return;
 
         const userMessage = { sender: "user", text: input };
-        setMessages((prev) => [...prev, userMessage]);
         setInput("");
         setIsTyping(true);
 
