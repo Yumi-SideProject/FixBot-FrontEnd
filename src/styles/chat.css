@@ -213,3 +213,16 @@ body {
     border: 1px solid #ccc;
     height: auto;
 }
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.chat-image img {
+    max-width: 200px;
+    max-height: 200px;
+    margin-top: 8px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}

@@ -90,11 +90,22 @@ function ChatBot() {
             try {
                 imageUrl = await uploadImageToSupabase(imageFile, "chat");
                 console.log("📷 이미지 업로드 완료:", imageUrl);
+
+                const imageMessage = { sender: "user", text: "", imageUrl };
+                setMessages((prev) => [...prev, userMessage, imageMessage]);
+
             } catch (err) {
                 console.error("이미지 업로드 실패:", err.message);
+
+                setMessages((prev) => [...prev, userMessage, {
+                    sender: "system",
+                    text: "⚠️ 이미지 업로드에 실패했어요. 다시 시도해 주세요.",
+                }]);
             }
             setImageFile(null);
             setImagePreviewUrl(null);
+        } else {
+            setMessages((prev) => [...prev, userMessage]);
         }
 
         const aiResponse = await sendMessageToOpenAI(input, brand, category, subcategory, question, imageUrl);
@@ -117,7 +128,11 @@ function ChatBot() {
             <div className="chat-box">
                 {messages.map((msg, index) => (
                     <div key={index} className={msg.sender === "bot" ? "bot-message" : "user-message"}>
-                        {msg.sender === "bot" ? "🤖" : "👤"} {msg.text.split("\n").map((line, i) => <p key={i}>{line}</p>)}
+                        {msg.sender === "bot" ? "🤖" : "👤"} {msg.text.split("\n").map((line, i) => <p key={i}>{line}</p>)} {msg.imageUrl && (
+                        <div className="chat-image">
+                            <img src={msg.imageUrl} alt="업로드 이미지" />
+                        </div>
+                    )}
                     </div>
                 ))}
                 {isTyping && (
@@ -156,14 +171,16 @@ function ChatBot() {
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
                             onKeyDown={(e) => {
-                                if (e.key === "Enter") {
+                                if (e.key === "Enter" && !isTyping) {
                                     e.preventDefault();
                                     sendMessage();
                                 }
                             }}
                             placeholder="문제에 대해 더 자세히 설명해주세요..."
                         />
-                        <button onClick={sendMessage}>📩 전송</button>
+                        <button onClick={sendMessage} disabled={isTyping}>
+                            {isTyping ? "⌛ 처리 중..." : "📩 전송"}
+                        </button>
                     </div>
 
                     <div className="image-upload-area">
