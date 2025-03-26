@@ -42,6 +42,13 @@ body {
     box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.05);
 }
 
+/* 📱 데스크탑 이상에서만 min-width 적용 */
+@media screen and (min-width: 768px) {
+    .fixbot-card {
+        min-width: 700px;
+    }
+}
+
 .fixbot-logo {
     width: clamp(3rem, 10vw, 6.25rem);
     height: clamp(3rem, 10vw, 6.25rem);
