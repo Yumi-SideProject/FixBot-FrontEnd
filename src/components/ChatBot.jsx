@@ -64,6 +64,34 @@ function ChatBot() {
     };
 
     useEffect(() => {
+        const saved = sessionStorage.getItem("fixbot_messages");
+        if (saved) {
+            try {
+                const parsed = JSON.parse(saved);
+                if (Array.isArray(parsed)) {
+                    setMessages(parsed);
+                }
+            } catch (e) {
+                console.error("세션 메시지 복원 실패:", e);
+            }
+        }
+    }, []);
+
+    useEffect(() => {
+        const saved = sessionStorage.getItem("fixbot_messages");
+        if (saved) {
+            try {
+                const parsed = JSON.parse(saved);
+                if (Array.isArray(parsed)) {
+                    setMessages(parsed);
+                }
+            } catch (e) {
+                console.error("세션 메시지 복원 실패:", e);
+            }
+        }
+    }, []);
+
+    useEffect(() => {
         if (pendingSearchQuery) {
             setSearchQuery(pendingSearchQuery);
             setPendingSearchQuery(null);
@@ -127,7 +155,7 @@ function ChatBot() {
             <div className="chat-box">
                 {messages.map((msg, index) => (
                     <div key={index} className={msg.sender === "bot" ? "bot-message" : "user-message"}>
-                        {msg.sender === "bot" ? "🤖" : "👤"} {msg.text.split("\n").map((line, i) => <p key={i}>{line}</p>)} {msg.imageUrl && (
+                        {msg.sender === "bot" ? "🤖" : "👤"} {msg.text && msg.text.split("\n").map((line, i) => <p key={i}>{line}</p>)} {msg.imageUrl && (
                         <div className="chat-image">
                             <img src={msg.imageUrl} alt="업로드 이미지" />
                         </div>
