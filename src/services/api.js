@@ -1,11 +1,12 @@
 const BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8080";
 
-export async function sendMessageToOpenAI(message, brand, category, subcategory, question, imageUrl) {
+export async function sendMessageToOpenAI(sessionId, message, brand, category, subcategory, question, imageUrl) {
     try {
         const response = await fetch(`${BASE_URL}/chat/ai-response`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
+                sessionId,
                 message,
                 brand,
                 category,

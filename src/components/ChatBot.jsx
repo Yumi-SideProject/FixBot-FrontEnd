@@ -5,6 +5,14 @@ import { sendMessageToOpenAI } from "../services/api.js";
 import { uploadImageToSupabase } from "../services/upload";
 
 function ChatBot() {
+    const [sessionId] = useState(() => {
+        let saved = localStorage.getItem("fixbot_sessionId");
+        if (!saved) {
+            saved = crypto.randomUUID();
+            localStorage.setItem("fixbot_sessionId", saved);
+        }
+        return saved;
+    });
     const [searchParams] = useSearchParams();
     const brand = searchParams.get("brand") || "알 수 없음";
     const category = searchParams.get("category") || "알 수 없음";
@@ -135,7 +143,7 @@ function ChatBot() {
             setMessages((prev) => [...prev, userMessage]);
         }
 
-        const aiResponse = await sendMessageToOpenAI(input, brand, category, subcategory, question, imageUrl);
+        const aiResponse = await sendMessageToOpenAI(sessionId, input, brand, category, subcategory, question, imageUrl);
         console.log("🧠 FixBot 응답 내용:", aiResponse);
 
         setMessageQueue(prev => [...prev, {
