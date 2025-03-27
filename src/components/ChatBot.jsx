@@ -183,6 +183,9 @@ function ChatBot() {
                     <button
                         onClick={() => {
                             setSearchQuery(null);
+                            const newId = crypto.randomUUID();
+                            localStorage.setItem("fixbot_sessionId", newId); // 새 세션 저장
+                            window.location.reload(); // 새로고침으로 초기화
                             setMessages([
                                 {
                                     sender: "bot",
