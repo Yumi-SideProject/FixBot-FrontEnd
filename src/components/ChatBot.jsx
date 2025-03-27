@@ -196,7 +196,15 @@ function ChatBot() {
                         <input
                             type="text"
                             value={input}
-                            onChange={(e) => setInput(e.target.value)}
+                            maxLength={1000}
+                            onChange={(e) => {
+                                const value = e.target.value;
+                                if (value.length > 1000) {
+                                    alert("❗입력은 최대 1000자까지 가능합니다.");
+                                    return;
+                                }
+                                setInput(value);
+                            }}
                             onKeyDown={(e) => {
                                 if (e.key === "Enter" && !isTyping) {
                                     e.preventDefault();
